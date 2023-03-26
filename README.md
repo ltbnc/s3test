@@ -57,7 +57,6 @@ $ pip3 install boto3
 
 * Developed and tested on Ubuntu 20.04 with localstack
 
-
 ## Assumptions
 
 * All deployments are in a single bucket.
@@ -65,6 +64,7 @@ $ pip3 install boto3
 * Less than 1000 total objects in the bucket.
 * Prefixes are not objects themselves.
 * All deployments have consistent file names.
+* Objects are not modified after the initial push to S3 (so last_modified date can be used as a creation date)
 
 ## FAQ
 
@@ -75,4 +75,5 @@ $ pip3 install boto3
 
 * Use pagination to allow for buckets with more than 1000 objects.
 * Reduce the total number of calls to AWS to reduce costs when deleting large amounts of data (potentially delete in chunks with boto3 delete_objects).
+* Further abstract the bucket/S3 specific stuff to add actions targeting other AWS resources.
 
